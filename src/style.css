@@ -1,0 +1,178 @@
+:root {
+  --bg: #2E3532;
+  --text: #E0E3E5;
+  --farz: #960200;
+  --muakkadah: #8AAA79;
+  --witr: #9FA4C4;
+  --border: rgba(255, 255, 255, 0.08);
+  --radius: 6px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.container {
+  display: grid;
+  gap: 1.2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  align-items: start;
+  justify-items: center;
+}
+
+/* Title */
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.5px;
+  margin: 0;
+  grid-column: 1 / -1;
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  gap: 2rem;
+  font-size: 1rem;
+  color: var(--text);
+  font-weight: 500;
+  justify-content: center;
+  grid-column: 1 / -1;
+  margin-bottom: 0.5rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: currentColor;
+  border: 1px solid white;
+}
+
+.legend-item:nth-child(1) { color: var(--farz); }
+.legend-item:nth-child(2) { color: var(--muakkadah); }
+.legend-item:nth-child(3) { color: var(--witr); }
+
+/* Table — Grid-Based Uniform Cells */
+.rakat-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 8px 6px;
+  font-size: 1.1rem;
+  text-align: center;
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.rakat-table th,
+.rakat-table td {
+  width: calc(1/8 * 100%);
+  min-width: 70px;
+  padding: 0.6rem 0.4rem;
+  font-weight: 600;
+}
+
+.rakat-table th {
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.4rem;
+}
+
+.rakat-table td {
+  color: var(--text);
+  font-size: 1.25rem;
+  font-weight: 700;
+  background-color: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius);
+  transition: background 0.2s ease;
+}
+
+/* Empty cells */
+.rakat-table td:empty {
+  background: transparent !important;
+  color: transparent;
+  box-shadow: none;
+}
+
+/* Farz — Deep Red */
+.farz {
+  color: white;
+  background-color: var(--farz) !important;
+  box-shadow: 0 0 8px rgba(150, 2, 0, 0.3);
+}
+
+/* Muakkadah — Earth Green */
+.muakkadah {
+  color: #0d1b0d;
+  background-color: var(--muakkadah) !important;
+  box-shadow: 0 0 8px rgba(138, 170, 121, 0.3);
+}
+
+/* Witr — Periwinkle Blue */
+.waajib {
+  color: #1a1c3a;
+  background-color: var(--witr) !important;
+  box-shadow: 0 0 8px rgba(159, 164, 196, 0.35);
+}
+
+/* Total */
+.total {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-radius: var(--radius);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem 0.8rem;
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .legend {
+    gap: 1.4rem;
+    font-size: 0.95rem;
+  }
+
+  .rakat-table {
+    font-size: 1rem;
+  }
+
+  .rakat-table th,
+  .rakat-table td {
+    padding: 0.5rem 0.3rem;
+    font-size: 1.1rem;
+  }
+
+  .total {
+    font-size: 1.25rem;
+  }
+}

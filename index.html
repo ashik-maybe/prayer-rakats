@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prayer Rakats</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Rakats</h1>
+
+    <div class="legend">
+      <div class="legend-item"><span class="color farz"></span> Farz</div>
+      <div class="legend-item"><span class="color muakkadah"></span> Muakkadah</div>
+      <div class="legend-item"><span class="color waajib"></span> Witr</div>
+    </div>
+
+    <table class="rakat-table">
+      <thead>
+        <tr>
+          <th>Prayer</th>
+          <th>Sunnat</th>
+          <th>Farz</th>
+          <th>Sunnat</th>
+          <th>Nafl</th>
+          <th>Witr</th>
+          <th>Nafl</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Fajr</td><td class="muakkadah">2</td><td class="farz">2</td><td></td><td></td><td></td><td></td><td class="total">4</td></tr>
+        <tr><td>Zohr</td><td class="muakkadah">4</td><td class="farz">4</td><td class="muakkadah">2</td><td>2</td><td></td><td></td><td class="total">12</td></tr>
+        <tr><td>Asr</td><td>4</td><td class="farz">4</td><td></td><td></td><td></td><td></td><td class="total">8</td></tr>
+        <tr><td>Maghrib</td><td></td><td class="farz">3</td><td class="muakkadah">2</td><td>2</td><td></td><td></td><td class="total">7</td></tr>
+        <tr><td>Isha</td><td>4</td><td class="farz">4</td><td class="muakkadah">2</td><td>2</td><td class="waajib">3</td><td>2</td><td class="total">17</td></tr>
+        <tr><td>Jumuah</td><td class="muakkadah">4</td><td class="farz">2</td><td class="muakkadah">6</td><td>2</td><td></td><td></td><td class="total">14</td></tr>
+      </tbody>
+    </table>
+
+    <footer class="footer">
+      <p>621 CE</p>
+    </footer>
+  </div>
+
+  <script src="src/main.js"></script>
+</body>
+</html>
