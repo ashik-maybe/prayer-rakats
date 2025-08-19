@@ -1,15 +1,58 @@
+/*
+📁 1. COLOR PALETTE (15% More Vibrant)
+---------------------------------------------
+Increased saturation and lightness by ~15% for more presence.
+*/
+
 :root {
+  /* Base */
   --bg: #2E3532;
   --text: #E0E3E5;
-  --farz: #960200;
-  --muakkadah: #8AAA79;
-  --witr: #9FA4C4;
-  --border: rgba(255, 255, 255, 0.08);
+  --border-alpha: rgba(255, 255, 255, 0.08);
   --radius: 6px;
+
+  /* Base Hues (unchanged) */
+  --farz-hue: 11;      /* Red */
+  --muakkadah-hue: 108; /* Green */
+  --witr-hue: 230;      /* Blue */
+
+  /* Increased Saturation & Lightness by ~15% */
+  --farz-sat: 85%;      /* was 70% → now punchier */
+  --farz-lum: 38%;      /* was 30% */
+
+  --muakkadah-sat: 30%; /* was 25% */
+  --muakkadah-lum: 52%; /* was 45% */
+
+  --witr-sat: 26%;      /* was 22% */
+  --witr-lum: 69%;      /* was 60% */
+
+  /* Muted Backgrounds — now with more presence */
+  --farz-bg: hsla(var(--farz-hue), var(--farz-sat), var(--farz-lum), 0.28);
+  --muakkadah-bg: hsla(var(--muakkadah-hue), var(--muakkadah-sat), var(--muakkadah-lum), 0.23);
+  --witr-bg: hsla(var(--witr-hue), var(--witr-sat), var(--witr-lum), 0.21);
+
+  /* Text Over Accents — brighter but still soft */
+  --farz-text: #EFB8A9;
+  --muakkadah-text: #B2C2A4;
+  --witr-text: #C2C7DD;
+
+  /* Borders — slightly stronger */
+  --farz-border: hsla(var(--farz-hue), var(--farz-sat), var(--farz-lum), 0.15);
+  --muakkadah-border: hsla(var(--muakkadah-hue), var(--muakkadah-sat), var(--muakkadah-lum), 0.15);
+  --witr-border: hsla(var(--witr-hue), var(--witr-sat), var(--witr-lum), 0.15);
+
+  /* Legend Dots — more visible */
+  --farz-dot: hsla(var(--farz-hue), var(--farz-sat), var(--farz-lum), 0.7);
+  --muakkadah-dot: hsla(var(--muakkadah-hue), var(--muakkadah-sat), var(--muakkadah-lum), 0.8);
+  --witr-dot: hsla(var(--witr-hue), var(--witr-sat), var(--witr-lum), 0.75);
 }
 
+/*
+📁 2. TYPOGRAPHY & FONT STACK
+---------------------------------------------
+*/
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: var(--bg);
   color: var(--text);
   line-height: 1.4;
@@ -18,6 +61,10 @@ body {
   min-height: 100vh;
 }
 
+/*
+📁 3. LAYOUT & STRUCTURE
+---------------------------------------------
+*/
 .container {
   display: grid;
   gap: 1.2rem;
@@ -28,7 +75,6 @@ body {
   justify-items: center;
 }
 
-/* Title */
 .title {
   font-family: 'Playfair Display', serif;
   font-size: 2.8rem;
@@ -38,6 +84,11 @@ body {
   margin: 0;
   grid-column: 1 / -1;
 }
+
+/*
+📁 4. COMPONENTS
+=============================================
+*/
 
 /* Legend */
 .legend {
@@ -65,11 +116,11 @@ body {
   border: 1px solid white;
 }
 
-.legend-item:nth-child(1) { color: var(--farz); }
-.legend-item:nth-child(2) { color: var(--muakkadah); }
-.legend-item:nth-child(3) { color: var(--witr); }
+.legend-item:nth-child(1) .color { color: var(--farz-dot); }
+.legend-item:nth-child(2) .color { color: var(--muakkadah-dot); }
+.legend-item:nth-child(3) .color { color: var(--witr-dot); }
 
-/* Table — Grid-Based Uniform Cells */
+/* Table */
 .rakat-table {
   width: 100%;
   border-collapse: separate;
@@ -115,28 +166,32 @@ body {
   box-shadow: none;
 }
 
-/* Farz — Deep Red */
+/* Accent Cells — Muted & Harmonious */
 .farz {
-  color: white;
-  background-color: var(--farz) !important;
-  box-shadow: 0 0 8px rgba(150, 2, 0, 0.3);
+  color: var(--farz-text);
+  font-weight: 700;
+  background-color: var(--farz-bg) !important;
+  border: 1px solid var(--farz-border);
+  border-radius: var(--radius);
 }
 
-/* Muakkadah — Earth Green */
 .muakkadah {
-  color: #0d1b0d;
-  background-color: var(--muakkadah) !important;
-  box-shadow: 0 0 8px rgba(138, 170, 121, 0.3);
+  color: var(--muakkadah-text);
+  font-weight: 700;
+  background-color: var(--muakkadah-bg) !important;
+  border: 1px solid var(--muakkadah-border);
+  border-radius: var(--radius);
 }
 
-/* Witr — Periwinkle Blue */
 .waajib {
-  color: #1a1c3a;
-  background-color: var(--witr) !important;
-  box-shadow: 0 0 8px rgba(159, 164, 196, 0.35);
+  color: var(--witr-text);
+  font-weight: 700;
+  background-color: var(--witr-bg) !important;
+  border: 1px solid var(--witr-border);
+  border-radius: var(--radius);
 }
 
-/* Total */
+/* Total — Uniform with other numbers */
 .total {
   font-family: 'Inter', sans-serif;
   font-size: 1.25rem;
@@ -146,7 +201,10 @@ body {
   border-radius: var(--radius);
 }
 
-/* Responsive */
+/*
+📁 5. RESPONSIVE
+---------------------------------------------
+*/
 @media (max-width: 768px) {
   .container {
     padding: 1.5rem 0.8rem;
