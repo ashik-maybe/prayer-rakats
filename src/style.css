@@ -1,9 +1,15 @@
 /*
-📁 1. COLOR PALETTE (15% More Vibrant)
----------------------------------------------
-Increased saturation and lightness by ~15% for more presence.
+=============================================
+  PRAYER RAKATS — STYLING
+  Modular | Vibrant | Accessible | Tooltip Ready
+=============================================
 */
 
+/*
+📁 1. COLOR PALETTE (15% More Vibrant)
+---------------------------------------------
+Increased saturation and luminance for better presence.
+*/
 :root {
   /* Base */
   --bg: #2E3532;
@@ -11,40 +17,47 @@ Increased saturation and lightness by ~15% for more presence.
   --border-alpha: rgba(255, 255, 255, 0.08);
   --radius: 6px;
 
-  /* Base Hues (unchanged) */
-  --farz-hue: 11;      /* Red */
-  --muakkadah-hue: 108; /* Green */
-  --witr-hue: 230;      /* Blue */
+  /* Base Hues */
+  --farz-hue: 11;
+  --muakkadah-hue: 108;
+  --witr-hue: 230;
 
-  /* Increased Saturation & Lightness by ~15% */
-  --farz-sat: 85%;      /* was 70% → now punchier */
-  --farz-lum: 38%;      /* was 30% */
+  /* Increased Saturation & Lightness (~15%) */
+  --farz-sat: 85%;
+  --farz-lum: 38%;
 
-  --muakkadah-sat: 30%; /* was 25% */
-  --muakkadah-lum: 52%; /* was 45% */
+  --muakkadah-sat: 30%;
+  --muakkadah-lum: 52%;
 
-  --witr-sat: 26%;      /* was 22% */
-  --witr-lum: 69%;      /* was 60% */
+  --witr-sat: 26%;
+  --witr-lum: 69%;
 
-  /* Muted Backgrounds — now with more presence */
+  /* Backgrounds */
   --farz-bg: hsla(var(--farz-hue), var(--farz-sat), var(--farz-lum), 0.28);
   --muakkadah-bg: hsla(var(--muakkadah-hue), var(--muakkadah-sat), var(--muakkadah-lum), 0.23);
   --witr-bg: hsla(var(--witr-hue), var(--witr-sat), var(--witr-lum), 0.21);
 
-  /* Text Over Accents — brighter but still soft */
+  /* Text Over Accents */
   --farz-text: #EFB8A9;
   --muakkadah-text: #B2C2A4;
   --witr-text: #C2C7DD;
 
-  /* Borders — slightly stronger */
+  /* Borders */
   --farz-border: hsla(var(--farz-hue), var(--farz-sat), var(--farz-lum), 0.15);
   --muakkadah-border: hsla(var(--muakkadah-hue), var(--muakkadah-sat), var(--muakkadah-lum), 0.15);
   --witr-border: hsla(var(--witr-hue), var(--witr-sat), var(--witr-lum), 0.15);
 
-  /* Legend Dots — more visible */
+  /* Legend Dots */
   --farz-dot: hsla(var(--farz-hue), var(--farz-sat), var(--farz-lum), 0.7);
   --muakkadah-dot: hsla(var(--muakkadah-hue), var(--muakkadah-sat), var(--muakkadah-lum), 0.8);
   --witr-dot: hsla(var(--witr-hue), var(--witr-sat), var(--witr-lum), 0.75);
+
+  /* Tooltip */
+  --tooltip-bg: #333;
+  --tooltip-text: #fff;
+  --tooltip-font-size: 0.85rem;
+  --tooltip-radius: 4px;
+  --tooltip-padding: 0.4rem 0.6rem;
 }
 
 /*
@@ -137,6 +150,7 @@ body {
   min-width: 70px;
   padding: 0.6rem 0.4rem;
   font-weight: 600;
+  position: relative;
 }
 
 .rakat-table th {
@@ -163,13 +177,55 @@ body {
 .rakat-table td:empty {
   background: transparent !important;
   color: transparent;
-  box-shadow: none;
+  pointer-events: none;
 }
 
-/* Accent Cells — Muted & Harmonious */
+/* Accent Cells with Tooltip */
+.farz,
+.muakkadah,
+.waajib {
+  position: relative;
+  z-index: 1;
+}
+
+.farz::after,
+.muakkadah::after,
+.waajib::after {
+  content: attr(data-label);
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--tooltip-bg);
+  color: var(--tooltip-text);
+  font-size: var(--tooltip-font-size);
+  font-weight: 500;
+  padding: var(--tooltip-padding);
+  border-radius: var(--tooltip-radius);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  font-family: 'Inter', sans-serif;
+}
+
+.farz::after { content: "Farz"; }
+.muakkadah::after { content: "Muakkadah"; }
+.waajib::after { content: "Witr"; }
+
+.farz:hover::after,
+.muakkadah:hover::after,
+.waajib:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Accent Styles */
 .farz {
   color: var(--farz-text);
-  font-weight: 700;
   background-color: var(--farz-bg) !important;
   border: 1px solid var(--farz-border);
   border-radius: var(--radius);
@@ -177,7 +233,6 @@ body {
 
 .muakkadah {
   color: var(--muakkadah-text);
-  font-weight: 700;
   background-color: var(--muakkadah-bg) !important;
   border: 1px solid var(--muakkadah-border);
   border-radius: var(--radius);
@@ -185,7 +240,6 @@ body {
 
 .waajib {
   color: var(--witr-text);
-  font-weight: 700;
   background-color: var(--witr-bg) !important;
   border: 1px solid var(--witr-border);
   border-radius: var(--radius);
@@ -232,5 +286,14 @@ body {
 
   .total {
     font-size: 1.25rem;
+  }
+
+  /* Adjust tooltip position on small screens */
+  .farz::after,
+  .muakkadah::after,
+  .waajib::after {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.5rem;
+    top: -30px;
   }
 }
